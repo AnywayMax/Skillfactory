@@ -13,18 +13,19 @@ def win_or_loose():
     return False
 
 def gameboard_print (gameboard):
-  print ('  0-1-2')
+  print ('   0-1-2')
   for row in range (len(gameboard)):
-    print (str(row)+'|', *gameboard[row])
+    print (str(row)+']', *gameboard[row])
     
     
 def select_player (gameboard,player):
   while True:
     gameboard_print(gameboard)
-    choise = input (f'Ход {player}! Выберите клетку путем ввода двух координат от 0 до 2: ').split()
-    print("\033[H\033[J")
+    print(f'Ход игрока [{player}]!')
+    choise = input (f'Выберите клетку [путем ввода двух координат [0..2 0..2]: ').split()
+    print("\033[H\033[J") #очистить консоль для новой отрисовки игровой доски
     if len(choise) != 2:
-      print ('Введите 2 координаты: ')
+      print ('Введите 2 координаты[0..2 0..2]: ')
       continue
     if not choise[0].isdigit() or not choise[1].isdigit():
       print('Неверный выбор. Нужны числа. ')
@@ -49,7 +50,7 @@ def game (gameboard,player):
       player = 'o'
     x, y = select_player(gameboard, player)
     if count == 9:
-      print('Ничья')
+      print('Ничья! Достигнуто максимальное количество ходов!')
       break
     gameboard[x][y] = player
     
