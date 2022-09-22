@@ -231,7 +231,7 @@ class Game:
     def loop(self):
         num = 0
         while True:
-            print(self.show_field())
+            self.show_field()
 
             if num % 2 == 0:
                 print("-" * 20)
@@ -260,6 +260,7 @@ class Game:
         self.loop()
 
     def show_field(self):
+        print('')
         us = str(self.us.board).split('\n')
         ai = str(self.ai.board).split('\n')
         print('Поле игрока ' + " "*21 + ' Поле компьютера')
